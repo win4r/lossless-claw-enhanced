@@ -41,7 +41,7 @@
     "vitest": "^3.0.0"
   },
   "peerDependencies": {
-    "openclaw": "*"
+    "openclaw": ">=2026.4.2"
   },
   "publishConfig": {
     "access": "public"
