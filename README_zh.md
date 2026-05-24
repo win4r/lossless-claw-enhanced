@@ -58,6 +58,19 @@ openclaw plugins enable lossless-claw
 }
 ```
 
+> **OpenClaw 2026.5.x 提示：** 如果 `openclaw.json` 校验报
+> `plugins: Invalid input`，说明当前 OpenClaw host 还没有在配置校验阶段接受
+> `plugins.entries.lossless-claw.config` 里的插件自定义字段。此时只在
+> `openclaw.json` 保留 `plugins.slots.contextEngine = "lossless-claw"`，
+> 模型覆盖改用环境变量：
+>
+> ```bash
+> export LCM_SUMMARY_MODEL=minimax/MiniMax-M2.5
+> export LCM_EXPANSION_MODEL=minimax/MiniMax-M2.5
+> export LCM_SUMMARY_PROVIDER=minimax
+> export LCM_EXPANSION_PROVIDER=minimax
+> ```
+
 ## 本 Fork 的修復
 
 ### 1. `getApiKey()` Provider Config Fallback

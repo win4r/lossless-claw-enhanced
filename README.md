@@ -115,6 +115,34 @@ Restart the gateway after configuration changes:
 openclaw gateway restart
 ```
 
+#### OpenClaw 2026.5.x config validation
+
+Some OpenClaw 2026.5.x builds validate `openclaw.json` before plugin schemas are
+loaded. In that case, putting custom plugin config under
+`plugins.entries.lossless-claw.config` can fail with:
+
+```text
+OpenClaw config is invalid: ~/.openclaw/openclaw.json
+  x plugins: Invalid input
+```
+
+If you see that error, keep only the slot/enablement settings in
+`openclaw.json` and set LCM tuning through environment variables instead. For
+example:
+
+```bash
+export LCM_SUMMARY_MODEL=minimax/MiniMax-M2.5
+export LCM_EXPANSION_MODEL=minimax/MiniMax-M2.5
+# Optional when the model string does not include a provider prefix:
+export LCM_SUMMARY_PROVIDER=minimax
+export LCM_EXPANSION_PROVIDER=minimax
+```
+
+The plugin still supports `summaryModel`, `summaryProvider`, `expansionModel`,
+and `expansionProvider` when the OpenClaw host accepts plugin config objects;
+environment variables are the compatible path for strict 2026.5.x config
+validators.
+
 ### Update to latest
 
 ```bash

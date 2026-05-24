@@ -36,6 +36,33 @@ export LCM_INCREMENTAL_MAX_DEPTH=-1
 
 Restart OpenClaw.
 
+### OpenClaw 2026.5.x config validation
+
+Some OpenClaw 2026.5.x builds validate `openclaw.json` before plugin schemas are
+loaded. On those builds, custom plugin config under
+`plugins.entries.lossless-claw.config` may be rejected with:
+
+```text
+OpenClaw config is invalid: ~/.openclaw/openclaw.json
+  x plugins: Invalid input
+```
+
+When that happens, keep only plugin enablement and the context-engine slot in
+`openclaw.json`, then use environment variables for LCM tuning:
+
+```bash
+export LCM_SUMMARY_MODEL=minimax/MiniMax-M2.5
+export LCM_EXPANSION_MODEL=minimax/MiniMax-M2.5
+# Optional when the model name is bare:
+export LCM_SUMMARY_PROVIDER=minimax
+export LCM_EXPANSION_PROVIDER=minimax
+```
+
+The plugin still reads `summaryModel`, `summaryProvider`, `expansionModel`, and
+`expansionProvider` from plugin config when the OpenClaw host accepts plugin
+config objects. Environment variables are the compatible path for strict
+2026.5.x validators.
+
 ## Tuning guide
 
 ### Context threshold

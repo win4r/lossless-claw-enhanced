@@ -36,6 +36,32 @@ export LCM_INCREMENTAL_MAX_DEPTH=-1
 
 然后重启 OpenClaw。
 
+### OpenClaw 2026.5.x 配置校验
+
+部分 OpenClaw 2026.5.x 版本会在加载插件 schema 之前先校验
+`openclaw.json`。在这些版本里，把自定义插件配置写到
+`plugins.entries.lossless-claw.config` 下面，可能会报：
+
+```text
+OpenClaw config is invalid: ~/.openclaw/openclaw.json
+  x plugins: Invalid input
+```
+
+遇到这个错误时，建议 `openclaw.json` 里只保留插件启用和
+context-engine slot，LCM 参数改用环境变量：
+
+```bash
+export LCM_SUMMARY_MODEL=minimax/MiniMax-M2.5
+export LCM_EXPANSION_MODEL=minimax/MiniMax-M2.5
+# 如果模型名没有 provider 前缀，再加：
+export LCM_SUMMARY_PROVIDER=minimax
+export LCM_EXPANSION_PROVIDER=minimax
+```
+
+当 OpenClaw host 接受 plugin config object 时，插件仍然支持
+`summaryModel`、`summaryProvider`、`expansionModel`、`expansionProvider`。
+对严格的 2026.5.x 配置校验器来说，环境变量是兼容路径。
+
 ## 调优指南
 
 ### 上下文阈值
