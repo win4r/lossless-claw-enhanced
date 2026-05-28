@@ -1,4 +1,14 @@
-# lossless-claw（無損上下文管理插件）
+# lossless-claw-enhanced（無損上下文管理插件）
+
+> [!WARNING]
+> **此 fork 已不再維護 — 請改用 upstream**
+>
+> 本 fork 當初的兩個差異化功能 — **CJK 感知的 token 估算**和 **CJK trigram FTS 搜尋** — 都已被合進 upstream [`Martian-Engineering/lossless-claw`](https://github.com/Martian-Engineering/lossless-claw)（[PR #344](https://github.com/Martian-Engineering/lossless-claw/pull/344)、[PR #219](https://github.com/Martian-Engineering/lossless-claw/pull/219) 均已合併）。自 upstream `v0.11.x` 起，本 fork 與 upstream 已無功能差距。
+>
+> 本 fork 目前停在 `0.5.3`，最後一次適配 OpenClaw 為 `2026.4.14`，已落後 upstream 約 6 個 minor 版本，不會再更新。
+>
+> - **新用戶**：請直接使用 [`Martian-Engineering/lossless-claw`](https://github.com/Martian-Engineering/lossless-claw)。它能在當前 OpenClaw 上乾淨編譯，且已包含本 fork 首發的所有 CJK 修復。
+> - **OpenClaw 2026.5.x 以上的現有用戶**：請切換到 upstream。本 fork 在當前 OpenClaw 上已無法編譯（見 [#32](https://github.com/win4r/lossless-claw-enhanced/issues/32)）。
 
 > OpenClaw 的 DAG 式對話壓縮插件 — 讓 AI 記住一切，不再遺忘。
 

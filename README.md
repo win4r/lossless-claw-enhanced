@@ -1,6 +1,14 @@
 # 🦞lossless-claw-enhanced
 
-> Enhanced fork of [Martian-Engineering/lossless-claw](https://github.com/Martian-Engineering/lossless-claw) — fixes CJK token estimation and cherry-picks critical upstream bug fixes for production reliability.
+> [!WARNING]
+> **DEPRECATED — please use upstream instead**
+>
+> The two original differentiators of this fork — **CJK-aware token estimation** and **CJK trigram FTS search** — have both been merged into upstream [`Martian-Engineering/lossless-claw`](https://github.com/Martian-Engineering/lossless-claw) ([PR #344](https://github.com/Martian-Engineering/lossless-claw/pull/344), [PR #219](https://github.com/Martian-Engineering/lossless-claw/pull/219)). As of upstream `v0.11.x` there is no functional gap between this fork and upstream.
+>
+> This fork is at `0.5.3` and last adapted to OpenClaw `2026.4.14` — about 6 minor versions behind upstream. It will not be updated further.
+>
+> - **New users**: use [`Martian-Engineering/lossless-claw`](https://github.com/Martian-Engineering/lossless-claw) directly. It builds clean against current OpenClaw and includes all the CJK fixes this fork pioneered.
+> - **Existing users on OpenClaw 2026.5.x+**: switch to upstream. This fork no longer compiles against current OpenClaw (see [#32](https://github.com/win4r/lossless-claw-enhanced/issues/32)).
 
 Lossless Context Management plugin for [OpenClaw](https://github.com/openclaw/openclaw), based on the [LCM paper](https://papers.voltropy.com/LCM) from [Voltropy](https://x.com/Voltropy). Replaces OpenClaw's built-in sliding-window compaction with a DAG-based summarization system that preserves every message while keeping active context within model token limits.
 
